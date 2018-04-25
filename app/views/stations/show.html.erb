@@ -3,5 +3,16 @@
   <%= @station.name %>
 </p>
 
+<% if @station.routes.empty? %>
+  <p>Station is not attached to any route</p>
+<% else %>
+<p>Station attached to the following routes:</p>
+  <ul>
+    <% @station.routes.each do |route| %>
+      <li><%= route.number %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_station_path(@station) %>
 <%= link_to 'Go back', stations_path %>

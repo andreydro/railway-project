@@ -1,0 +1,16 @@
+<%= form_for(@train) do |f| %>
+    <%= render 'common/errors', resource: @train %>
+
+    <div class="field">
+      <%= f.label :number %>
+      <%= f.text_field :number %>
+    </div>
+    <div>
+      <%= f.label :current_station, "Current station: " %>
+      <%= f.collection_select :current_station_id, Station.all, :id, :name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "#{ @train.new_record? ? "Create" : "Edit"}" %>
+    </div>
+<% end %>
