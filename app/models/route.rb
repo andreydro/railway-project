@@ -4,4 +4,18 @@ class Route < ActiveRecord::Base
   has_many :trains
 
   validates :number, presence: true
+
+  before_validation :set_name
+
+  private
+
+  def set_name
+    self.name ||= "#{stations.first.title} - #{stations.last.title}"
+  end
+
+  def stations_count
+    if stations.size < 2
+      errors.add(:base, "Route should contain at least 2 stations")
+    end
+  end
 end
