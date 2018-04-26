@@ -1,0 +1,20 @@
+<%= form_for ticket do |f| %>
+  <%= render 'common/errors', resource: ticket %>
+
+    <%= f.hidden_filed :train_id %>
+    <%= f.hidden_filed :start_station_id %>
+    <%= f.hidden_filed :end_station_id %>
+
+    <div>
+      <%= f.label :passenger_name %>
+      <%= f.text_field :passenger_name%>
+    </div>
+    <div>
+      <%= f.label :passenger_passport %>
+      <%= f.text_field :passenger_passport %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+<% end %>

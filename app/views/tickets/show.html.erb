@@ -1,0 +1,19 @@
+<p>
+  <strong>Train number:</strong>
+  <%=	@ticket.train.number %>
+</p>
+<p>
+  <strong>Departure station:</strong>
+  <%= ticket.start_station.title %>
+</p>
+<p>
+  <strong>Arrival station</strong>
+  <%= @ticket.end_station %>
+</p>
+<p>
+  <strong>Passenger:</strong>
+  <%= @ticket.passenger_name %>
+  <%= @ticket.passenger_passport %>
+</p>
+
+<%= link_to "Tickets list", tickets_path %>
