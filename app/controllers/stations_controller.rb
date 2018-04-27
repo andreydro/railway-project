@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy]
+  before_action :set_station, only: [:show, :edit, :update, :destroy, :update_position]
 
   def index
     @stations = Station.all
@@ -36,6 +36,12 @@ class StationsController < ApplicationController
   def destroy
     @station.destroy
     redirect_to stations_path
+  end
+
+  def update_position
+    @route = Route.find(params[:route_id])
+    @station.update_position(@route, params[:position])
+    redirect_to @route
   end
 
   private

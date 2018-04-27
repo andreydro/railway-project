@@ -10,5 +10,19 @@
     Not entered
   <% end %>
 </p>
+
+<p>
+  <strong>Carriages</strong>
+  <ul>
+    <% @train.carriages.each do |car| %>
+      <li><%= link_to "Carriage #{car.number}", car %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <%= link_to 'Add carriage', new_train_carriage_path(@train) %>
+</p>
+
 <%= link_to 'Edit', edit_train_path(@train) %>
 <%= link_to 'Go back', trains_path %>

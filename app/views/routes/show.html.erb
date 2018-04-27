@@ -2,6 +2,35 @@
   <strong>Title:</strong>
   <%= @route.number %>
 </p>
+<p>
+  <strong>Stations: </strong>
+  <% if @route.stations.empty? %>
+    List is empty
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Position</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @route.stations.each do |station| %>
+          <tr>
+            <td><%= station.name %></td>
+            <td>
+              <%= form_tag update_position_station_path(station), method: :patch do %>
+                <%= number_field_tag :position, station.position_in(@route) %>
+                <%= hidden_field_tag :route_id, @route.id %>
+                <%= submit_tag "Edit" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_route_path(@route) %>
 <%= link_to 'Go back', routes_path %>

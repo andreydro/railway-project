@@ -1,4 +1,4 @@
-<%= form_for @train, carriage.becomes(Carriage) do |f| %>
+<%= form_for [@train, @carriage] do |f| %>
   <div>
     <%= f.label :top_seats, "Top seats" %>
     <%= f.text_field :top_seats %>
@@ -16,12 +16,12 @@
 
   <div>
     <%= f.label :side_bottom_seats, "Side bottom seats" %>
-    <%= f.text_field :side_bottom_seats %>
+    <%= f.text_field :side_buttom_seats %>
   </div>
 
   <div>
-    <%= f.label :setting_seats, "Setting seats" %>
-    <%= f.text_field :setting_seats %>
+    <%= f.label :sitting_seats, "Sitting seats" %>
+    <%= f.text_field :sitting_seats %>
   </div>
 
   <div>

@@ -10,6 +10,7 @@ class CarriagesController < ApplicationController
   end
 
   def new
+    @train = Train.find(params[:train_id])
     @carriage = Carriage.new
   end
 
