@@ -1,8 +1,16 @@
 <h1>Search tickets</h1>
 
-Form is coming...
+<div>
+  <%= render 'form' %>
+</div>
 
-<p></p>
+<div>
+  <% if @search.result.present? %>
+    <h1>Search results:</h1>
+    <%= render 'result' %>
+  <% end %>
+</div>
+
 <div>
 <% if user_signed_in? %>
     <span>Hello,  <%= current_user.email %>  </span>

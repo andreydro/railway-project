@@ -10,32 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426102753) do
+ActiveRecord::Schema.define(version: 20180428141100) do
 
   create_table "carriages", force: :cascade do |t|
     t.string "type"
     t.string "type_of_carriage"
-    t.integer "bottom_seats"
-    t.integer "0"
-    t.integer "top_seats"
-    t.integer "side_top_seats"
-    t.integer "side_buttom_seats"
-    t.integer "sitting_seats"
+    t.integer "bottom_seats", default: 0
+    t.integer "top_seats", default: 0
+    t.integer "side_top_seats", default: 0
+    t.integer "side_bottom_seats", default: 0
+    t.integer "sitting_seats", default: 0
     t.integer "number"
     t.integer "train_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id", "type"], name: "index_carriages_on_id_and_type"
     t.index ["train_id"], name: "index_carriages_on_train_id"
   end
 
   create_table "routes", force: :cascade do |t|
-    t.string "number"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "stations", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 20180426102753) do
     t.integer "station_id"
     t.integer "route_id"
     t.integer "position"
+    t.string "arrival"
+    t.string "departure"
+    t.time "arrival_time"
+    t.time "departure_time"
+    t.index ["route_id"], name: "index_stations_routes_on_route_id"
+    t.index ["station_id"], name: "index_stations_routes_on_station_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -52,6 +58,8 @@ ActiveRecord::Schema.define(version: 20180426102753) do
     t.integer "train_id"
     t.integer "start_station_id"
     t.integer "end_station_id"
+    t.string "passenger_name"
+    t.string "passenger_passport"
     t.index ["end_station_id"], name: "index_tickets_on_end_station_id"
     t.index ["start_station_id"], name: "index_tickets_on_start_station_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
@@ -64,6 +72,7 @@ ActiveRecord::Schema.define(version: 20180426102753) do
     t.datetime "updated_at", null: false
     t.integer "current_station_id"
     t.integer "route_id"
+    t.boolean "queue", default: true
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end

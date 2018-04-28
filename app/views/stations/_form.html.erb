@@ -2,8 +2,8 @@
     <%= render 'common/errors', resource: @station %>
 
     <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
     </div>
     <div class="actions">
       <%= f.submit "#{ @station.new_record? ? "Create" : "Edit"}" %>

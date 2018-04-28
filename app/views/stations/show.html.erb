@@ -1,6 +1,6 @@
 <p>
   <strong>Name:</strong>
-  <%= @station.name %>
+  <%= @station.title %>
 </p>
 
 <% if @station.routes.empty? %>
@@ -9,7 +9,7 @@
 <p>Station attached to the following routes:</p>
   <ul>
     <% @station.routes.each do |route| %>
-      <li><%= route.number %></li>
+      <li><%= route.name %></li>
     <% end %>
   </ul>
 <% end %>
