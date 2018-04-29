@@ -17,9 +17,9 @@
         </div>
         <%= render "form", station: station, hidden: true %>
       </td>
-      <td><%= link_to "Show", station %></td>
-      <td><%= link_to "Edit", edit_station_path(station) %></td>
-      <td><%= link_to "Delete", station, method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <td><%= link_to "Show", admin_station(station) %></td>
+      <td><%= link_to "Edit", edit_admin_station_path(station) %></td>
+      <td><%= link_to "Delete", admin_station(station), method: :delete, data: { confirm: "Are you sure?" } %></td>
     </tr>
   <% end  %>
   </tbody>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to "Add station", new_station_path %>
+<%= link_to "Add station", new_admin_station_path %>

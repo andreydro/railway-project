@@ -1,4 +1,4 @@
-class StationsController < ApplicationController
+class Admin::StationsController < Admin::BaseController
   before_action :set_station, only: [:show, :edit, :update, :destroy, :update_position]
 
   def index
