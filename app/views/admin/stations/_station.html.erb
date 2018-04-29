@@ -3,7 +3,7 @@
 
   <%= render "form", station: @station %>
 
-  <td><%= link_to "Show", station %></td>
-  <td><%= link_to "Edit", edit_station_path(station) %></td>
-  <td><%= link_to "Destroy", station, method: :delete, data: { confirm: "Are you sure?" } %></td>
+  <td><%= link_to t('common.show'), [:admin, station] %></td>
+  <td><%= link_to t('common.edit'), edit_admin_station_path(station) %></td>
+  <td><%= link_to t.('common.destroy'), [:admin, station], method: :delete, data: { confirm: "#{ t.(c'ommon.are_you_sure') }" } %></td>
 </tr>

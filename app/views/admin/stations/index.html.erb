@@ -12,14 +12,14 @@
   <% @stations.each do |station| %>
     <tr>
       <td>
-        <div>
+        <div id="station_title_<%= station.id %>">
           <%= station.title %>
         </div>
         <%= render "form", station: station, hidden: true %>
       </td>
-      <td><%= link_to "Show", admin_station(station) %></td>
-      <td><%= link_to "Edit", edit_admin_station_path(station) %></td>
-      <td><%= link_to "Delete", admin_station(station), method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <td><%= link_to "Show", [:admin, station] %></td>
+      <td><%= link_to "Edit", '', class: 'edit_station', data: { station_id: :station_id } %></td>
+      <td><%= link_to "Delete", [:admin, station], method: :delete, data: { confirm: "Are you sure?" } %></td>
     </tr>
   <% end  %>
   </tbody>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to "Add station", new_admin_station_path %>
+<%= link_to t('commom.create_new_station'), new_admin_station_path %>

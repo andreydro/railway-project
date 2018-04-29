@@ -1,13 +1,13 @@
 <%= form_for @search, url: { action: 'show' } do |f| %>
-  <div>
+  <div class="col-md-4">
     <%= f.label :start_station_id, 'Start_station' %>
     <%= f.collection_select :start_station_id, Station.all, :id, :title %>
   </div>
-  <div>
+  <div class="col-md-4">
     <%= f.label :end_station_id, 'End station' %>
     <%= f.collection_select :end_station_id, Station.all, :id, :title %>
   </div>
-  <div>
+  <div class="col-md-4">
     <%= f.submit 'Search' %>
   </div>
 <% end %>

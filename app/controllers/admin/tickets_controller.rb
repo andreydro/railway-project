@@ -1,10 +1,9 @@
 class TicketsController < ApplicationController
-  before_action :authenticate_user!, only: :create
-  before_action :set_ticket, only: [:show, :destroy]
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   before_action :pre_order, only: [:new, :create]
 
   def index
-    @tickets = current_user.tickets
+    @tickets = Ticket.all
   end
 
   def new
@@ -12,26 +11,36 @@ class TicketsController < ApplicationController
   end
 
   def create
-    @ticket = current_user.tickets.new(ticket_params)
+    @ticket = Ticket.new(ticket_params)
     if @ticket.save
-      redirect_to @ticket, notice: "Ticket was successfully purchased."
+      redirect_to [:admin, @ticket], notice: "Ticket was successfully purchased."
     else
       render :new
     end
 
     def show
-      @ticket = Ticket.find(params[:id])
+    end
+
+    def edit
+    end
+
+    def update
+      if @ticket.update(ticket_params)
+        redirect_to [:admin, @ticket]
+      else
+        render :edit
+      end
     end
 
     def destroy
       @ticket.destroy
-      redirect_to tickets_path
+      redirect_to admin_tickets_path
     end
 
     private
 
     def set_ticket
-      @ticket = current_user.tickets.find(params[:id])
+      @ticket = Ticket.find(params[:id])
     end
 
     def pre_order
@@ -41,7 +50,7 @@ class TicketsController < ApplicationController
     end
 
     def ticket_params
-      params.require(:ticket).permit(:train_id, :start_station_id, :end_station_id, :passenger_name, :passenger_passport)
+      params.require(:ticket).permit(:user_id, :train_id, :start_station_id, :end_station_id, :passenger_name, :passenger_passport)
     end
 
     def new_ticket_params

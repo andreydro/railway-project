@@ -10,14 +10,13 @@ class Admin::CarriagesController < Admin::BaseController
   end
 
   def new
-    @train = Train.find(params[:train_id])
     @carriage = Carriage.new
   end
 
   def create
     @carriage = @train.carriages.new(carriage_params)
     if @carriage.save
-      redirect_to @train
+      redirect_to [:admin, @train]
     else
       render :new
     end
@@ -28,7 +27,7 @@ class Admin::CarriagesController < Admin::BaseController
 
   def update
     if @carriage.update(carriage_params)
-      redirect_to carriages_path(@carriage), notice: 'Carriage update'
+      redirect_to admin_carriages_path(@carriage), notice: 'Carriage update'
     else
       render :edit
     end
@@ -36,7 +35,7 @@ class Admin::CarriagesController < Admin::BaseController
 
   def destroy
     @carriage.destroy
-    redirect_to carriages_path
+    redirect_to admin_carriages_path
   end
 
   private

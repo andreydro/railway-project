@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'searches#show'
   devise_for :users
 
-  resource :search, only: [:create, :show, :edit]
-  resources :tickets, only: [:create, :show, :new, :index, :destroy]
+  resource :search, only: [:new, :create, :show, :edit]
+  resources :tickets, only: [:create, :show,]
 
   namespace :admin do
     resources :stations do

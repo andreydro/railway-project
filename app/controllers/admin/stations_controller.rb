@@ -16,7 +16,7 @@ class Admin::StationsController < Admin::BaseController
     @station = Station.new(station_params)
 
     if @station.save
-      redirect_to @station
+      redirect_to [:admin, @station], notice: "Station was successfully created."
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::StationsController < Admin::BaseController
 
   def update
     if @station.update(station_params)
-      redirect_to @station
+      redirect_to admin_stations_path, notice: "Station was successfully updated."
     else
       render :edit
     end
@@ -35,13 +35,13 @@ class Admin::StationsController < Admin::BaseController
 
   def destroy
     @station.destroy
-    redirect_to stations_path
+    redirect_to admin_stations_path
   end
 
   def update_position
     @route = Route.find(params[:route_id])
     @station.update_position(@route, params[:position])
-    redirect_to @route
+    redirect_to admin_route_path(@route)
   end
 
   private
@@ -51,6 +51,6 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def station_params
-    params.require(:station).permit(:name)
+    params.require(:station).permit(:title)
   end
 end

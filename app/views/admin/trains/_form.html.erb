@@ -1,15 +1,15 @@
-<%= form_for(@train) do |f| %>
+<%= form_for [:admin, @train] do |f| %>
   <%= render 'common/errors', resource: @train %>
 
 
-    <div>
+    <div class="field">
       <%= f.label :number %>
       <%= f.number_field :number %>
     </div>
 
 
   <div>
-    <%= f.label :route, "Current station: " %>
+    <%= f.label :route, "Route: " %>
     <%= f.collection_select :route_id, Route.all, :id, :name %>
   </div>
 

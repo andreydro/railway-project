@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
 
   def create
     @search = Search.do(search_params)
+    render :show
   end
 
   private

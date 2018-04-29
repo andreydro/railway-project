@@ -10,7 +10,7 @@ class Ticket < ActiveRecrod::Base
   validates :passenger_name, :passenger_passport, presence: true
 
   def route_name
-    "#{start_station.name} -  #{end_station.name}"
+    "#{ start_station.title } -  #{ end_station.title }"
   end
 
   private

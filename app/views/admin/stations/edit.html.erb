@@ -2,5 +2,5 @@
 
 <%= render "form", station: @station %>
 
-<%= link_to "Show", @station %>
-<%= link_to "Back", stations_path %>
+<%= link_to t.('common.show'), [:admin, @station] %>
+<%= link_to t.('common.back'), admin_stations_path %>
