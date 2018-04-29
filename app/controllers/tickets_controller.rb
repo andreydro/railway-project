@@ -32,6 +32,12 @@ class TicketsController < ApplicationController
       @ticket = current_user.tickets.find(params[:id])
     end
 
+    def pre_order
+      @train = Train.find(new_ticket_params[:train_id])
+      @start_station = Station.find(new_ticket_params[:start_station_id])
+      @end_station = Station.find(new_ticket_params[:end_station_id])
+    end
+
     def ticket_params
       params.require(:ticket).permit(:train_id, :start_station_id, :end_station_id, :passenger_name, :passenger_passport)
     end

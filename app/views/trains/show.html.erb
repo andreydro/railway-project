@@ -5,7 +5,7 @@
 <p>
   <strong>On station</strong>
   <% if @train.current_station.present? %>
-    <%= @train.current_station.name %>
+    <%= @train.current_station.title %>
   <% else %>
     Not entered
   <% end %>
@@ -15,7 +15,7 @@
   <strong>Carriages</strong>
   <ul>
     <% @train.carriages.each do |car| %>
-      <li><%= link_to "Carriage #{car.number}", car %></li>
+      <li><%= link_to "Carriage #{car.number}", car.becomes(Carriage) %></li>
     <% end %>
   </ul>
 </p>

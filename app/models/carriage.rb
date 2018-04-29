@@ -17,7 +17,6 @@ class Carriage < ActiveRecord::Base
     scope type_name, -> {where(type: type)}
   end
 
-
   private
 
   def set_number

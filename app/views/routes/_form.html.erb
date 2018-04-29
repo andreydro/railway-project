@@ -5,7 +5,13 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
     </div>
+
+    <div class="field">
+      <%= l.label :station_ids, "stations list" %>
+      <%= l.collection_select :station_ids, Station.all, :id, :title, {}, { multiple: true } %>
+    </div>
+
     <div class="actions">
-      <%= f.submit "Create" %>
+      <%= f.submit "#{ @route.new_recrod? ? 'Create' : 'Update' }" %>
     </div>
 <% end %>

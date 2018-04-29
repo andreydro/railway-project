@@ -11,4 +11,12 @@ Features:
  
  Lesson 12: done
  
- Lesson 13: in progress...
+ Lesson 13: done
+ 
+ Lesson 14: done
+ 
+ Lesson 15: done
+ 
+ Lesson 16: done
+ 
+ Lesson 17: in progress...
