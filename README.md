@@ -19,4 +19,12 @@ Features:
  
  Lesson 16: done
  
- Lesson 17: in progress...
+ Lesson 17: done
+ 
+ Lesson 18: done
+ 
+ Lesson 19: done
+ 
+ Lesson 20: done
+ 
+ Lesson 21: done
